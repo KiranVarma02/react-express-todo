@@ -26,6 +26,8 @@
     list-style: none;
     overflow: auto;
     padding: 0.5em;
+    margin-left: 20em;
+    margin-right: 20em;
 }
 
 .todo-list li {

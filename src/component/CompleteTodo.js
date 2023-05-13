@@ -19,14 +19,12 @@ const CompleteTodo = ({todo}) => {
             {
                 todo.taskStatus ?
                     <>
-                        <label style={{textDecoration: "line-through"}}>{todo.task}</label>
                         <ImCheckboxChecked
                             type="checkbox"
                             onClick={handleIsCheckedChange}
                         />
                     </> :
                     <>
-                        <label>{todo.task}</label>
                         <ImCheckboxUnchecked
                             type="checkbox"
                             onClick={handleIsCheckedChange}

@@ -1,46 +1,19 @@
-import React, {useState} from "react";
-import {RiDeleteBin5Fill} from "react-icons/ri";
+import React from "react";
 import CompleteTodo from "./CompleteTodo";
 import EditTodo from "./EditTodo";
-import {FaEdit} from "react-icons/fa";
 import DeleteTodo from "./DeleteTodo";
+import TaskInTodo from "./TaskInTodo";
 
 const Todo = ({todo}) => {
-
-    const [isEditing, setIsEditing] = useState(false);
-
-    const handleIsEditing = () => {
-        setIsEditing(true)
-    }
-
-
-    const editCallback = (editStatus) => {
-        if (editStatus) setIsEditing(false)
-    }
-
-    const TodoTask = () => {
-        if (!isEditing) {
-            return (
-                <>
-                    <CompleteTodo todo={todo} />
-
-                    <FaEdit
-                        type="checkbox"
-                        onClick={handleIsEditing}
-                    />
-
-                    <DeleteTodo todo={todo} />
-                </>
-            )
-        } else {
-            return <EditTodo todo={todo} handleEditCallback={editCallback}/>
-        }
-    }
-
     return (
         <div className="todo-list">
             <li>
-                <TodoTask />
+                <>
+                    <CompleteTodo todo={todo} />
+                    <TaskInTodo todo={todo} />
+                    <EditTodo todo={todo} />
+                    <DeleteTodo todo={todo} />
+                </>
             </li>
         </div>
     );

@@ -1,41 +1,23 @@
 import React, {useState} from "react";
-import {motion} from "framer-motion";
-import {IoSave} from "react-icons/io5";
 import {useDispatch} from "react-redux";
 import {updateTodo} from "../actions";
+import {FaEdit} from "react-icons/fa";
 
-const EditTodo = ({todo, handleEditCallback}) => {
+const EditTodo = ({todo}) => {
     const dispatch = useDispatch()
 
-    const [updatedText, setUpdatedText] = useState(todo.task);
+    const [isEditing, setIsEditing] = useState(false);
 
-    const handleIsEditingChange = () => {
-        dispatch(updateTodo({...todo, task: updatedText}))
-        handleEditCallback(true)
-    }
-
-    const handleSetUpdatedText = (e) => {
-        setUpdatedText(e.target.value)
+    const handleIsEditing = () => {
+        setIsEditing(!isEditing)
+        dispatch(updateTodo({...todo, editStatus: isEditing}))
     }
 
     return (
-        <>
-            <input
-                className="todo-input"
-                value={updatedText}
-                onChange={handleSetUpdatedText}
-            />
-
-            <motion.button
-                whileHover={{scale: 1.1}}
-                whileTap={{scale: 0.9}}
-                type="submit"
-                className="add-btn"
-                onClick={handleIsEditingChange}
-            ><IoSave/>
-            </motion.button>
-            <br/>
-        </>
+        <FaEdit
+            type="checkbox"
+            onClick={handleIsEditing}
+        />
     )
 }
 

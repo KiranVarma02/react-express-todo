@@ -24,8 +24,7 @@ const updateTodo = async (changeTodo) => {
     const index = repo.todos.findIndex(x => x.id === changeTodo.id)
 
     if (index !== -1) {
-        repo.todos[index].task = changeTodo.task
-        repo.todos[index].taskStatus = changeTodo.taskStatus
+        repo.todos[index] = changeTodo
         return repo.todos[index]
     }
     return new Error('Index out of bounds')
