@@ -68,6 +68,22 @@
     border: 2px solid rgb(67, 58, 168);
 }
 
+.todo-edit-input {
+    min-width: 15rem;
+    width: 10vw;
+
+    max-height: 2.5rem;
+    background-color: #e1ebfd;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+
+    align-self: center;
+}
+.todo-edit-input:focus {
+    outline: none;
+    border: 2px solid rgb(67, 58, 168);
+}
 .add-btn {
     margin-left: 1rem;
     background-color: #271c6c;
@@ -92,6 +108,7 @@
 .App {
     margin-top: 3rem;
     display: flex;
+    align-items: center;
     flex-direction: column;
 }
 

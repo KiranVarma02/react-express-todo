@@ -24,7 +24,7 @@ const TaskInTodo = ({todo}) => {
             return (
                 <>
                     <input
-                        className="todo-input"
+                        className="todo-edit-input"
                         value={updatedText}
                         onChange={handleSetUpdatedText}
                     />
