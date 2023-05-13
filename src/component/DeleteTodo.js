@@ -1,21 +1,29 @@
 import {useDispatch} from "react-redux";
 import {deleteTodo} from "../actions";
 import {Button, Modal} from "react-bootstrap";
-import {useState} from "react";
+import React, {useState} from "react";
+import {RiDeleteBin5Fill} from "react-icons/ri";
 
-const DeleteTodo = ({ todo, handleDeleteCallback }) => {
+const DeleteTodo = ({ todo }) => {
     const dispatch = useDispatch()
 
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     const handleDelete = () => {
-        dispatch(deleteTodo({...todo, deleteStatus: true}))
         setShow(!show)
-        handleDeleteCallback(false)
     };
+
+    const handleDeleteSave = () => {
+        dispatch(deleteTodo({...todo, deleteStatus: true}))
+    }
 
     return (
         <>
+            <RiDeleteBin5Fill
+                type="checkbox"
+                onClick={handleDelete}
+            />
+
             <Modal show={show}>
                 <Modal.Header closeButton>
                     <Modal.Title>Deleting Todo Task</Modal.Title>
@@ -25,7 +33,7 @@ const DeleteTodo = ({ todo, handleDeleteCallback }) => {
                     <Button variant="secondary" onClick={() => setShow(!show)}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleDelete}>
+                    <Button variant="primary" onClick={handleDeleteSave}>
                         Delete
                     </Button>
                 </Modal.Footer>

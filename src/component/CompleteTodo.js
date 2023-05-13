@@ -4,27 +4,34 @@ import {updateTodo} from "../actions";
 import {useDispatch} from "react-redux";
 
 const CompleteTodo = ({todo}) => {
+
     const dispatch = useDispatch()
 
-    const [isCompleted, setIsCompleted] = useState(todo.status === false);
+    const [isCompleted, setIsCompleted] = useState(todo.taskStatus === false);
 
     const handleIsCheckedChange = () => {
         setIsCompleted(!isCompleted)
-        dispatch(updateTodo({...todo, status: true}))
+        dispatch(updateTodo({...todo, taskStatus: isCompleted}))
     }
 
     return (
         <>
             {
-                isCompleted ?
-                    <ImCheckboxChecked
-                        type="checkbox"
-                        onClick={handleIsCheckedChange}
-                    /> :
-                    <ImCheckboxUnchecked
-                        type="checkbox"
-                        onClick={handleIsCheckedChange}
-                    />
+                todo.taskStatus ?
+                    <>
+                        <label style={{textDecoration: "line-through"}}>{todo.task}</label>
+                        <ImCheckboxChecked
+                            type="checkbox"
+                            onClick={handleIsCheckedChange}
+                        />
+                    </> :
+                    <>
+                        <label>{todo.task}</label>
+                        <ImCheckboxUnchecked
+                            type="checkbox"
+                            onClick={handleIsCheckedChange}
+                        />
+                    </>
             }
         </>
     )
